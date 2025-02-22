@@ -51,10 +51,12 @@
             </div>
 
             <div class="input-group">
-                <label for="remote-onsite">Remote or Onsite:</label>
+                <label for="remote-onsite">Work Preference:</label>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="remote-onsite" name="remote-onsite">
-                    <label for="remote-onsite">Remote</label>
+                    <input type="checkbox" id="remote" name="remote">
+                    <label for="remote">Remote</label>
+                    <input type="checkbox" id="online" name="online">
+                    <label for="online">Online</label>
                 </div>
             </div>
         </div>
@@ -100,16 +102,12 @@
             dropdownContent.classList.toggle('show');
         }
 
-        // Close dropdown if clicked outside
+        // Close dropdown only when clicking outside
         window.onclick = function(event) {
-            if (!event.target.matches('.dropdown-button')) {
-                const dropdowns = document.getElementsByClassName('dropdown-content');
-                for (let i = 0; i < dropdowns.length; i++) {
-                    const openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
+            const dropdownContent = document.getElementById('dropdown-content');
+            const dropdownButton = document.querySelector('.dropdown-button');
+            if (!dropdownButton.contains(event.target) {
+                dropdownContent.classList.remove('show');
             }
         };
     </script>
