@@ -74,27 +74,6 @@
     </div>
 
     <script>
-
-        function submitForm()
-        {
-            let formData = {
-                occupation: document.getElementById('occupation').value,
-                freeTime: document.getElementById('free-time').value,
-                firstName: document.getElementById('first-name').value,
-                sleepHours: document.getElementById('sleeping-hours').value
-            };
-        }
-
-
-        fetch("http://127.0.0.1:5000/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => alert(data.message))
-        .catch(error => console.error(error))
-        
         // JavaScript to toggle light/dark mode
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
@@ -130,6 +109,15 @@
                 dropdownContent.classList.remove('show');
             }
         };
+
+        function insert(){
+            myJson= {
+                occupation: $("#input-section").find("#occupation").val(),
+                freeTime: $("#input-section").find("#free-time").val(),
+                sleepHours: $("#input-section").find("#sleeping-hours").val()
+            };
+        }
+        console.log("myJson", myJson);
     </script>
 </body>
 </html>
