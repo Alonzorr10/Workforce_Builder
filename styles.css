@@ -7,19 +7,19 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
     text-align: center;
     width: 100%;
     max-width: 800px;
-    position: relative; /* Ensure the container doesn't interfere with fixed positioning */
 }
 
 /* Title Styles */
 .title {
     font-size: 48px;
-    color: #333;
     margin-bottom: 40px;
 }
 
