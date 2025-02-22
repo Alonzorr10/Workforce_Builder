@@ -10,7 +10,7 @@
     <div class="container">
         <h1 class="title">Fill in the Details</h1>
 
-        <div class="input-section">
+        <div class="input-section" id="Fields">
             <div class="input-group">
                 <label for="occupation">Occupation:</label>
                 <input type="text" id="occupation" name="occupation">
@@ -74,6 +74,27 @@
     </div>
 
     <script>
+
+        function submitForm()
+        {
+            let formData = {
+                occupation: document.getElementById('occupation').value,
+                freeTime: document.getElementById('free-time').value,
+                firstName: document.getElementById('first-name').value,
+                sleepHours: document.getElementById('sleeping-hours').value
+            };
+        }
+
+
+        fetch("http://127.0.0.1:5000/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => alert(data.message))
+        .catch(error => console.error(error))
+        
         // JavaScript to toggle light/dark mode
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;

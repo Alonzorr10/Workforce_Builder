@@ -1,20 +1,17 @@
+from flask import flask, request, jsonify, render_template
 
-from bs4 import BeautifulSoup
-import requests
+app = flask(__name__)
 
-URL = "https://alonzorr10.github.io/Workforce_Builder/"
-r = requests.get(URL)
+@app.route('/')
 
-soup = BeautifulSoup(r.content, 'html5lib')
+def form():
+    return render_template('input-page.html')
 
-occupation = []
-freeTime = []
-sleepHours = []
-daysAvailable = []
-daysNotAvailable = []
+@app.route('/submit', methods['POST'])
 
-table = soup.find('div', attrs = {'id': 'fields'})
+def submit():
+    data = request.json
+    print("Testing: ", data)
 
-
-print(soup.prettify())
-
+if __name__ == '__main__':
+    app.run(debug = True)
