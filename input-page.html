@@ -62,8 +62,8 @@
 
         <!-- Buttons at the bottom -->
         <div class="button-group">
-            <button class="btn generate-btn">Generate Schedule</button>
-            <button class="btn back-btn" onclick="insert()">Back</button>
+            <button class="btn generate-btn" onclick = "insert()">Generate Schedule</button>
+            <button class="btn back-btn" onclick="window.location.href='index.html'">Back</button>
         </div>
 
         <!-- Light/Dark Mode Slider Button -->
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <script>
+    <script src = "https://code.jquery.com/jquery-3.6.0.min.js">
         // JavaScript to toggle light/dark mode
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
