@@ -13,6 +13,7 @@ body {
     text-align: center;
     width: 100%;
     max-width: 800px;
+    position: relative; /* Ensure the container doesn't interfere with fixed positioning */
 }
 
 /* Title Styles */
@@ -63,12 +64,12 @@ body {
 
 /* Settings Button Styles */
 .settings-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+    position: fixed; /* Fixed positioning */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
     background: none;
     border: none;
-    font-size: 36px;
+    font-size: 36px; /* Larger settings icon */
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1000; /* Ensure it's above other elements */
 }
