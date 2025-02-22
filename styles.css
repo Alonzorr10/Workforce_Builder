@@ -61,6 +61,14 @@ body {
     background-color: #c82333; /* Darker red on hover */
 }
 
+.generate-schedule-btn {
+    background-color: #28a745;
+}
+
+.generate-schedule-btn:hover {
+    background-color: #218838;
+}
+
 /* Input Section Styles */
 .input-section {
     margin-top: 30px;
