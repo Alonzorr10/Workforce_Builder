@@ -19,3 +19,9 @@ Note the PID (e.g., 12345).
 Kill the process using:
 kill -9 12345
 (Replace 12345 with the actual PID from the first command)
+
+So essentially, we have to start the Node.js Backend, run the thing locally or not but we can fix that later.
+
+git add .
+git commit -m ""
+git push -u origin MatthewBranch   

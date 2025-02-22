@@ -70,6 +70,7 @@
             <label for="theme-toggle" class="slider"></label>
         </div>
     </div>
+    <div id="schedule-output" class="output-container"></div>
 
     <script>
         // JavaScript to toggle light/dark mode
@@ -99,14 +100,37 @@
             dropdownContent.classList.toggle('show');
         }
 
+        // Prevent dropdown from closing when clicking inside
+        document.getElementById('dropdown-content').addEventListener('click', function(event) {
+            event.stopPropagation(); // Stops the click from propagating to window.onclick
+        });
         // Close dropdown only when clicking outside
         window.onclick = function(event) {
             const dropdownContent = document.getElementById('dropdown-content');
             const dropdownButton = document.querySelector('.dropdown-button');
-            if (!dropdownButton.contains(event.target)) {
+            if (!dropdownButton.contains(event.target)&& !dropdownContent.contains(event.target)) {
                 dropdownContent.classList.remove('show');
             }
         };
+
+        // Function to update the dropdown button text with selected days
+        function updateDropdownButton() {
+            const selectedDays = Array.from(document.querySelectorAll('#dropdown-content input[type=checkbox]:checked'))
+                .map(cb => cb.value);
+            
+            const dropdownButton = document.querySelector('.dropdown-button');
+
+            if (selectedDays.length > 0) {
+                dropdownButton.textContent = selectedDays.sort().join(", "); // Show selected days in order
+            } else {
+                dropdownButton.textContent = "Select Days"; // Default text when nothing is selected
+            }
+        }
+
+        // Attach event listeners to checkboxes to update the dropdown button dynamically
+        document.querySelectorAll('#dropdown-content input[type=checkbox]').forEach(checkbox => {
+            checkbox.addEventListener('change', updateDropdownButton);
+        });
 
         async function insert(){
             myJson = {
@@ -136,7 +160,26 @@
                 const data = await response.json();
                 console.log("Response from backend:", data);
 
-                alert("Response: " + data.choices[0].message.content);
+                try {
+                    const schedule = JSON.parse(data.choices[0].message.content);
+
+                    // Format schedule as HTML
+                    let scheduleHTML = "<h2>Your Weekly Schedule</h2><ul>";
+                    for (const [day, details] of Object.entries(schedule.schedule)) {
+                        scheduleHTML += `<li><strong>${day}:</strong> ${details}</li>`;
+                    }
+                    scheduleHTML += "</ul>";
+
+                    document.getElementById("schedule-output").innerHTML = scheduleHTML;
+                } catch (parseError) {
+                    console.error("Error parsing JSON response:", parseError);
+                    document.getElementById("schedule-output").innerHTML = "<p>Error: Invalid schedule format.</p>";
+                }
+
+                // alert("Response: " + data.choices[0].message.content);
+
+                // const schedule = JSON.parse(data.choices[0].message.content);
+                // alert("Generated Schedule: " + JSON.stringify(schedule, null, 2));
             } catch (error) {
                 console.error("Error:", error);
                 alert("Failed to get response.");
