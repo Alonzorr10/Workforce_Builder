@@ -11,7 +11,6 @@
         <h1 class="title">Fill in the Details</h1>
 
         <div class="input-section">
-            <!-- Existing Input Fields -->
             <div class="input-group">
                 <label for="occupation">Occupation:</label>
                 <input type="text" id="occupation" name="occupation">
@@ -106,7 +105,7 @@
         window.onclick = function(event) {
             const dropdownContent = document.getElementById('dropdown-content');
             const dropdownButton = document.querySelector('.dropdown-button');
-            if (!dropdownButton.contains(event.target) {
+            if (!dropdownButton.contains(event.target)) {
                 dropdownContent.classList.remove('show');
             }
         };

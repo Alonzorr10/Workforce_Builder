@@ -13,7 +13,8 @@ sleepHours = []
 daysAvailable = []
 daysNotAvailable = []
 
-table = soup.find('input', )
+table = soup.find('div', attrs = {'id': 'fields'})
+
 
 print(soup.prettify())
 
