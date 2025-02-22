@@ -1,9 +1,94 @@
-body {
-  background-color: powderblue;
+body 
+{
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
 }
-h1 {
-  color: blue;
+
+.container 
+{
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
-p {
-  color: red:
+
+.title 
+{
+  margin-top: 20px;
+  font-size: 24px;
+  color: #333;
 }
+
+.middle-section 
+{
+  margin-top: 50px;
+}
+
+.btn 
+{
+  padding: 10px 20 px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+.btn:hover 
+{
+  background-color: #0056b3;
+}
+
+.generate-btn 
+{
+  background-color: #28a745;
+}
+
+.generate-btn:hover 
+{
+  background-color: #218838;
+}
+
+.saved-btn
+{
+  background-color: #6c757d;
+}
+
+.saved-btn:hover
+{
+  background-color: #5a6268;
+}
+
+.settings-btn
+{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.input-section
+{
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.input-section input
+{
+  margin-top: 5px;
+  padding: 8px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
