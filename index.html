@@ -15,11 +15,11 @@
             <button class="btn save-btn">Save</button>
         </div>
 
-        <!-- Light/Dark Mode Toggle Button -->
-        <label class="switch">
+        <!-- Light/Dark Mode Slider Button -->
+        <div class="theme-slider">
             <input type="checkbox" id="theme-toggle">
-            <span class="slider"></span>
-        </label>
+            <label for="theme-toggle" class="slider"></label>
+        </div>
     </div>
 
     <script>
@@ -33,7 +33,7 @@
             themeToggle.checked = true;
         }
 
-        // Toggle theme on button click
+        // Toggle theme on slider click
         themeToggle.addEventListener('change', () => {
             if (themeToggle.checked) {
                 body.classList.add('dark-mode');
