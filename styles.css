@@ -12,29 +12,29 @@ body {
 .container {
     text-align: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 800px; /* Wider container for larger buttons and fonts */
 }
 
 /* Title Styles */
 .title {
-    font-size: 48px;
+    font-size: 48px; /* Larger font size */
     color: #333;
-    margin-bottom: 40px;
+    margin-bottom: 40px; /* More spacing */
 }
 
 /* Button Group Styles */
 .button-group {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: 20px; /* More space between buttons */
+    margin-top: 40px; /* Spacing above the buttons */
 }
 
 .btn {
-    padding: 20px 40px;
-    font-size: 24px;
+    padding: 20px 40px; /* Larger buttons */
+    font-size: 24px; /* Larger font size */
     border: none;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
     cursor: pointer;
     background-color: #007bff;
     color: white;
@@ -53,22 +53,41 @@ body {
     background-color: #218838;
 }
 
-.save-btn {
-    background-color: #6c757d;
+.back-btn {
+    background-color: #dc3545; /* Red color for back button */
 }
 
-.save-btn:hover {
-    background-color: #5a6268;
+.back-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
 
-/* Settings Button Styles */
-.settings-btn {
-    position: fixed; /* Fixed positioning */
-    bottom: 20px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
-    background: none;
-    border: none;
-    font-size: 36px; /* Larger settings icon */
-    cursor: pointer;
-    z-index: 1000; /* Ensure it's above other elements */
+/* Input Section Styles */
+.input-section {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px; /* More spacing */
+}
+
+.input-group label {
+    font-size: 24px; /* Larger font size */
+    color: #333;
+    margin-bottom: 10px; /* More spacing */
+}
+
+.input-group input {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Larger font size */
+    box-sizing: border-box;
 }
