@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 20px; /* More space between buttons */
-    margin-bottom: 40px; /* More spacing */
+    margin-top: 40px; /* Spacing above the buttons */
 }
 
 .btn {
@@ -53,26 +53,15 @@ body {
     background-color: #218838;
 }
 
-.save-btn {
-    background-color: #6c757d;
+.back-btn {
+    background-color: #dc3545; /* Red color for back button */
 }
 
-.save-btn:hover {
-    background-color: #5a6268;
+.back-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
 
-/* Settings Button Styles */
-.settings-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 36px; /* Larger settings icon */
-    cursor: pointer;
-}
-
-/* Input Page Styles */
+/* Input Section Styles */
 .input-section {
     margin-top: 30px;
     display: flex;
@@ -101,13 +90,4 @@ body {
     border-radius: 8px; /* Rounded corners */
     font-size: 18px; /* Larger font size */
     box-sizing: border-box;
-}
-
-/* Back Button Styles */
-.back-btn {
-    background-color: #dc3545; /* Red color for back button */
-}
-
-.back-btn:hover {
-    background-color: #c82333; /* Darker red on hover */
 }
