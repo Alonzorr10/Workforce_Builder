@@ -5,63 +5,112 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300vh;
+    height: 100vh;
     background-color: #f0f0f0;
 }
 
 .container {
     text-align: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 800px; /* Wider container for larger buttons and fonts */
 }
 
 /* Title Styles */
 .title {
-    font-size: 240px;
+    font-size: 48px; /* Larger font size */
     color: #333;
-    margin-bottom: 200px;
+    margin-bottom: 40px; /* More spacing */
 }
 
 /* Button Group Styles */
 .button-group {
     display: flex;
     justify-content: center;
-    gap: 150px; /* Space between buttons */
-    margin-bottom: 20px;
+    gap: 20px; /* More space between buttons */
+    margin-bottom: 40px; /* More spacing */
 }
 
 .btn {
-    padding: 10px 20px;
-    font-size: 64px;
+    padding: 20px 40px; /* Larger buttons */
+    font-size: 24px; /* Larger font size */
     border: none;
-    border-radius: 5px;
+    border-radius: 10px; /* Rounded corners */
     cursor: pointer;
     background-color: #007bff;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
     background-color: #0056b3;
 }
 
-.covenant-btn {
+.generate-btn {
     background-color: #28a745;
 }
 
-.covenant-btn:hover {
+.generate-btn:hover {
     background-color: #218838;
 }
 
-.saved-btn {
+.save-btn {
     background-color: #6c757d;
 }
 
-.saved-btn:hover {
+.save-btn:hover {
     background-color: #5a6268;
 }
 
-/* Content Styles */
-.content {
-    font-size: 72px;
+/* Settings Button Styles */
+.settings-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 36px; /* Larger settings icon */
+    cursor: pointer;
+}
+
+/* Input Page Styles */
+.input-section {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px; /* More spacing */
+}
+
+.input-group label {
+    font-size: 24px; /* Larger font size */
     color: #333;
+    margin-bottom: 10px; /* More spacing */
+}
+
+.input-group input {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Larger font size */
+    box-sizing: border-box;
+}
+
+/* Back Button Styles */
+.back-btn {
+    margin-top: 30px; /* More spacing */
+    padding: 20px 40px; /* Larger button */
+    font-size: 24px; /* Larger font size */
+    background-color: #dc3545; /* Red color for back button */
+}
+
+.back-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
