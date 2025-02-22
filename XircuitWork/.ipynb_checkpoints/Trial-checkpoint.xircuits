@@ -1,0 +1,112 @@
+{
+    "id": "1278280b-25b6-4929-9e37-1e37b373015f",
+    "offsetX": 0,
+    "offsetY": 0,
+    "zoom": 100,
+    "gridSize": 0,
+    "layers": [
+        {
+            "id": "ad3b3ed8-e7cc-47e8-95ee-4ff3506f81f2",
+            "type": "diagram-links",
+            "isSvg": true,
+            "transformed": true,
+            "models": {}
+        },
+        {
+            "id": "bbebd549-619f-463a-aa75-dab517037f14",
+            "type": "diagram-nodes",
+            "isSvg": false,
+            "transformed": true,
+            "models": {
+                "cebfc7cc-8c98-4712-98d1-f3d59d7efa50": {
+                    "id": "cebfc7cc-8c98-4712-98d1-f3d59d7efa50",
+                    "type": "custom-node",
+                    "extras": {
+                        "type": "Start"
+                    },
+                    "x": 100,
+                    "y": 100,
+                    "ports": [
+                        {
+                            "id": "e5e66040-96e8-4afb-8740-9b5f0a9f6b43",
+                            "type": "default",
+                            "extras": {},
+                            "x": 100,
+                            "y": 100,
+                            "name": "out-0",
+                            "alignment": "right",
+                            "parentNode": "cebfc7cc-8c98-4712-98d1-f3d59d7efa50",
+                            "links": [],
+                            "in": false,
+                            "label": "▶",
+                            "varName": "▶",
+                            "portType": "",
+                            "dataType": ""
+                        }
+                    ],
+                    "name": "Start",
+                    "color": "rgb(255,102,102)",
+                    "portsInOrder": [],
+                    "portsOutOrder": [
+                        "e5e66040-96e8-4afb-8740-9b5f0a9f6b43"
+                    ]
+                },
+                "73fcbe8e-ea4d-42e4-915a-95ec762d1fe2": {
+                    "id": "73fcbe8e-ea4d-42e4-915a-95ec762d1fe2",
+                    "type": "custom-node",
+                    "extras": {
+                        "type": "Finish"
+                    },
+                    "x": 700,
+                    "y": 100,
+                    "ports": [
+                        {
+                            "id": "7d8e5102-d1bd-4d61-9563-183bf1976269",
+                            "type": "default",
+                            "extras": {},
+                            "x": 700,
+                            "y": 100,
+                            "name": "in-0",
+                            "alignment": "left",
+                            "parentNode": "73fcbe8e-ea4d-42e4-915a-95ec762d1fe2",
+                            "links": [],
+                            "in": true,
+                            "label": "▶",
+                            "varName": "▶",
+                            "portType": "",
+                            "dataType": ""
+                        },
+                        {
+                            "id": "c444efd5-05db-4377-b912-ba64f434c168",
+                            "type": "default",
+                            "extras": {},
+                            "x": 700,
+                            "y": 100,
+                            "name": "parameter-dynalist-outputs",
+                            "alignment": "left",
+                            "parentNode": "73fcbe8e-ea4d-42e4-915a-95ec762d1fe2",
+                            "links": [],
+                            "in": true,
+                            "label": "outputs",
+                            "varName": "outputs",
+                            "portType": "",
+                            "dataType": "dynalist",
+                            "dynaPortOrder": 0,
+                            "dynaPortRef": {
+                                "previous": null,
+                                "next": null
+                            }
+                        }
+                    ],
+                    "name": "Finish",
+                    "color": "rgb(255,102,102)",
+                    "portsInOrder": [
+                        "7d8e5102-d1bd-4d61-9563-183bf1976269",
+                        "c444efd5-05db-4377-b912-ba64f434c168"
+                    ],
+                    "portsOutOrder": []
+                }
+            }
+        }
+    ]
+}

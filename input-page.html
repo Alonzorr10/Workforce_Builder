@@ -108,7 +108,7 @@
             }
         };
 
-        function insert(){
+        async function insert(){
             myJson = {
                 occupation: document.querySelector("#occupation").value,
                 freeTime: document.querySelector("#free-time").value,
@@ -125,8 +125,26 @@
             //console.log("Checked values:", values);
             console.log("myJson", myJson);
             console.log("myJson:", JSON.stringify(myJson, null, 2));
-        }
 
+            try {
+                const response = await fetch("http://localhost:8000/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(myJson)
+                });
+
+                const data = await response.json();
+                console.log("Response from backend:", data);
+
+                alert("Response: " + data.choices[0].message.content);
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Failed to get response.");
+            }
+
+
+        }
+        
         
     </script>
 </body>
