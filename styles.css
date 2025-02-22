@@ -45,13 +45,29 @@ body {
     margin-bottom: 10px; /* Spacing between label and input */
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
     padding: 12px;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px; /* Rounded corners */
     font-size: 18px; /* Larger font size for inputs */
     box-sizing: border-box;
+}
+
+.input-group select {
+    height: auto; /* Allow multiple selections */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between checkbox and label */
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
 }
 
 /* Button Group Styles */
@@ -142,21 +158,4 @@ body.dark-mode {
     color: #ffffff;
 }
 
-body.dark-mode .btn {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark-mode .btn:hover {
-    background-color: #555;
-}
-
-body.dark-mode .input-group label {
-    color: #ffffff; /* Ensure labels are visible in dark mode */
-}
-
-body.dark-mode .input-group input {
-    background-color: #333;
-    color: #ffffff;
-    border-color: #555;
-}
+body.dark-mode .btn
