@@ -63,7 +63,7 @@
         <!-- Buttons at the bottom -->
         <div class="button-group">
             <button class="btn generate-btn">Generate Schedule</button>
-            <button class="btn back-btn" onclick="window.location.href='index.html'">Back</button>
+            <button class="btn back-btn" onclick="insert()">Back</button>
         </div>
 
         <!-- Light/Dark Mode Slider Button -->
@@ -110,8 +110,9 @@
             }
         };
 
+        let myJson = {};
         function insert(){
-            myJson= {
+            myJson = {
                 occupation: $("#input-section").find("#occupation").val(),
                 freeTime: $("#input-section").find("#free-time").val(),
                 sleepHours: $("#input-section").find("#sleeping-hours").val()
