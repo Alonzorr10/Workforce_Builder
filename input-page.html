@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <script src = "https://code.jquery.com/jquery-3.6.0.min.js">
+    <script>
         // JavaScript to toggle light/dark mode
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
@@ -113,9 +113,9 @@
         let myJson = {};
         function insert(){
             myJson = {
-                occupation: $("#input-section").find("#occupation").val(),
-                freeTime: $("#input-section").find("#free-time").val(),
-                sleepHours: $("#input-section").find("#sleeping-hours").val()
+                occupation: document.querySelector("#occupation").value,
+                freeTime: document.querySelector("#free-time").value,
+                sleepHours: document.querySelector("#sleeping-hours").value
             };
             console.log("myJson", myJson);
         }
