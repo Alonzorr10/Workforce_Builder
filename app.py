@@ -1,22 +1,19 @@
-import xpress as xp
 
-xp.init('C:/Users/alonz/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0/LocalCache/local-packages/Python311/site-packages/xpress/license/community-xpauth.xpr')
+from bs4 import BeautifulSoup
+import requests
 
-# Create a simple linear optimization problem
-model = xp.problem()
+URL = "https://alonzorr10.github.io/Workforce_Builder/"
+r = requests.get(URL)
 
-# Define decision variables
-x = model.addVariable('x', lb=0, ub=10)
-y = model.addVariable('y', lb=0, ub=10)
+soup = BeautifulSoup(r.content, 'html5lib')
 
-# Add an objective function
-model.setObjective(5 * x + 4 * y, sense= 1)
+occupation = []
+freeTime = []
+sleepHours = []
+daysAvailable = []
+daysNotAvailable = []
 
-# Add a constraint
-model.addConstraint(x + y <= 15)
+table = soup.find('input', )
 
-# Solve the problem
-model.solve()
+print(soup.prettify())
 
-# Get the solution
-print(f"Optimal solution: x = {x.value}, y = {y.value}")
