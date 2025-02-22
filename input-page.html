@@ -51,11 +51,9 @@
 
             <div class="input-group">
                 <label for="remote-onsite">Work Preference:</label>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="remote" name="remote">
-                    <label for="remote">Remote</label>
-                    <input type="checkbox" id="on-site" name="on-site">
-                    <label for="on-site">On-site</label>
+                <div class="checkbox-group" id="checkbox-group">
+                    <label><input type="checkbox" id="remote" name="remote" value="Remote"> Remote</label>
+                    <label><input type="checkbox" id="on-site" name="on-site" value="On-Site"> On-site</label>
                 </div>
             </div>
         </div>
@@ -110,15 +108,25 @@
             }
         };
 
-        //let myJson = {};
         function insert(){
             myJson = {
                 occupation: document.querySelector("#occupation").value,
                 freeTime: document.querySelector("#free-time").value,
-                sleepHours: document.querySelector("#sleeping-hours").value
+                sleepHours: document.querySelector("#sleeping-hours").value,
+                daysAvailability: Array.from(document.querySelectorAll('#dropdown-content input[type=checkbox]:checked'))
+                .map(cb => cb.value),
+                workPreference: Array.from(document.querySelectorAll('#checkbox-group input[type=checkbox]:checked'))
+                .map(cb => cb.value)
             };
+        
+            //let daysAvailable = document.querySelectorAll("#dropdown-content input[type = checkbox]:checked")
+            //let values = Array.from(daysAvailable).map(cb => cb.value);
+
+            //console.log("Checked values:", values);
             console.log("myJson", myJson);
+            console.log("myJson:", JSON.stringify(myJson, null, 2));
         }
+
         
     </script>
 </body>
