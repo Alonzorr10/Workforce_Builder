@@ -105,9 +105,6 @@ body {
 
 /* Back Button Styles */
 .back-btn {
-    margin-top: 30px; /* More spacing */
-    padding: 20px 40px; /* Larger button */
-    font-size: 24px; /* Larger font size */
     background-color: #dc3545; /* Red color for back button */
 }
 
