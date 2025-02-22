@@ -45,8 +45,7 @@ body {
     margin-bottom: 10px; /* Spacing between label and input */
 }
 
-.input-group input,
-.input-group select {
+.input-group input {
     padding: 12px;
     width: 100%;
     border: 1px solid #ccc;
@@ -55,10 +54,63 @@ body {
     box-sizing: border-box;
 }
 
-.input-group select {
-    height: auto; /* Allow multiple selections */
+/* Custom Dropdown Styles */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
 }
 
+.dropdown-button {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 18px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-button .arrow {
+    font-size: 14px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    z-index: 1;
+    margin-top: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-content label {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.dropdown-content label:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-content input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.show {
+    display: block;
+}
+
+/* Checkbox Group Styles */
 .checkbox-group {
     display: flex;
     align-items: center;
@@ -158,4 +210,31 @@ body.dark-mode {
     color: #ffffff;
 }
 
-body.dark-mode .btn
+body.dark-mode .btn {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .btn:hover {
+    background-color: #555;
+}
+
+body.dark-mode .input-group label {
+    color: #ffffff; /* Ensure labels are visible in dark mode */
+}
+
+body.dark-mode .input-group input,
+body.dark-mode .dropdown-button,
+body.dark-mode .dropdown-content {
+    background-color: #333;
+    color: #ffffff;
+    border-color: #555;
+}
+
+body.dark-mode .dropdown-content label:hover {
+    background-color: #444;
+}
+
+body.dark-mode .checkbox-group input[type="checkbox"] {
+    filter: invert(1); /* Invert checkbox color for dark mode */
+}
