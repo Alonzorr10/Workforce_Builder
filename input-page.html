@@ -11,6 +11,7 @@
         <h1 class="title">Fill in the Details</h1>
 
         <div class="input-section">
+            <!-- Existing Input Fields -->
             <div class="input-group">
                 <label for="occupation">Occupation:</label>
                 <input type="text" id="occupation" name="occupation">
@@ -22,6 +23,33 @@
             <div class="input-group">
                 <label for="first-name">First Name:</label>
                 <input type="text" id="first-name" name="first-name">
+            </div>
+
+            <!-- New Input Fields -->
+            <div class="input-group">
+                <label for="sleeping-hours">Amount of Sleeping Hours:</label>
+                <input type="number" id="sleeping-hours" name="sleeping-hours" min="0" max="24">
+            </div>
+
+            <div class="input-group">
+                <label for="days-availability">Days Availability:</label>
+                <select id="days-availability" name="days-availability" multiple>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="remote-onsite">Remote or Onsite:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remote-onsite" name="remote-onsite">
+                    <label for="remote-onsite">Remote</label>
+                </div>
             </div>
         </div>
 
