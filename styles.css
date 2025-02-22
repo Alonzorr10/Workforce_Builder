@@ -37,6 +37,7 @@ body {
     flex-direction: column;
     width: 100%;
     margin-bottom: 20px; /* Spacing between input groups */
+    float: left;
 }
 
 .input-group label {
