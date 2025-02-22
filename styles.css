@@ -37,7 +37,6 @@ body {
     flex-direction: column;
     width: 100%;
     margin-bottom: 20px; /* Spacing between input groups */
-    float: left;
 }
 
 .input-group label {
@@ -104,7 +103,8 @@ body {
 }
 
 .dropdown-content input[type="checkbox"] {
-    margin-right: 10px;
+    margin-left: 10px; /* Move checkboxes to the right */
+    float: right; /* Align checkboxes to the right */
 }
 
 .show {
@@ -115,7 +115,7 @@ body {
 .checkbox-group {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between checkbox and label */
+    gap: 20px; /* Space between checkboxes */
 }
 
 .checkbox-group input[type="checkbox"] {
