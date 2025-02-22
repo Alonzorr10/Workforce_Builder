@@ -5,34 +5,34 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 300vh;
     background-color: #f0f0f0;
 }
 
 .container {
     text-align: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 800px;
 }
 
 /* Title Styles */
 .title {
-    font-size: 24px;
+    font-size: 240px;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 200px;
 }
 
 /* Button Group Styles */
 .button-group {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Space between buttons */
+    gap: 150px; /* Space between buttons */
     margin-bottom: 20px;
 }
 
 .btn {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 64px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -62,6 +62,6 @@ body {
 
 /* Content Styles */
 .content {
-    font-size: 18px;
+    font-size: 72px;
     color: #333;
 }
