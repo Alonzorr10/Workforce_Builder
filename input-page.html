@@ -13,24 +13,29 @@
         <h1 class="title">Fill in the Details</h1>
 
         <div class="input-section" id="Fields">
+                <!-- Occupation -->
             <div class="input-group">
                 <label for="occupation">Occupation:</label>
                 <input type="text" id="occupation" name="occupation">
             </div>
+
+            <!-- Available time per day -->
             <div class="input-group">
-                <label for="free-time">Free Time:</label>
-                <input type="text" id="free-time" name="free-time">
+                <label for="free-time">Available time per day:</label>
+                <input type="number" id="free-time" name="free-time" min="0" max="24" step="1" oninput="validateNumberInput(this)">
             </div>
+
+            <!-- First Name -->
             <div class="input-group">
                 <label for="first-name">First Name:</label>
                 <input type="text" id="first-name" name="first-name">
             </div>
 
-            <!-- New Input Fields -->
+            <!-- Amount of Sleeping Hour(s) -->
             <div class="input-group">
-                <label for="sleeping-hours">Amount of Sleeping Hours:</label>
-                <input type="number" id="sleeping-hours" name="sleeping-hours" min="0" max="24">
-            </div>
+                <label for="sleeping-hours">Amount of Sleeping Hour(s):</label>
+                <input type="number" id="sleeping-hours" name="sleeping-hours" min="0" max="24" step="1" oninput="validateNumberInput(this)">
+            </div> 
 
             <div class="input-group">
                 <label for="days-availability">Days Availability:</label>
@@ -64,6 +69,7 @@
         <div class="button-group">
             <button class="btn generate-btn" onclick = "insert()">Generate Schedule</button>
             <button class="btn back-btn" onclick="window.location.href='index.html'">Back</button>
+            <button class="btn save-btn" onclick = "save()">Save</button>
         </div>
 
         <!-- Light/Dark Mode Slider Button -->
@@ -87,6 +93,7 @@
         // JavaScript to toggle light/dark mode
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
+        let data = null; 
 
         // Check for saved theme in localStorage
         if (localStorage.getItem('theme') === 'dark') {
@@ -105,6 +112,11 @@
             }
         });
 
+        // Enforces user to only enter integer in "Available time"
+        function validateNumberInput(input)
+        {
+            input.value = input.value.replace(/[^0-9]/g, '');
+        } 
         // JavaScript to toggle dropdown
         function toggleDropdown() {
             const dropdownContent = document.getElementById('dropdown-content');
@@ -145,6 +157,7 @@
 
         async function insert(){
             myJson = {
+                firstName: document.querySelector("#first-name").value,
                 occupation: document.querySelector("#occupation").value,
                 freeTime: document.querySelector("#free-time").value,
                 sleepHours: document.querySelector("#sleeping-hours").value,
@@ -153,7 +166,8 @@
                 workPreference: Array.from(document.querySelectorAll('#checkbox-group input[type=checkbox]:checked'))
                 .map(cb => cb.value)
             };
-        
+            globalFirstName = document.querySelector("#first-name").value; 
+            //                firstName: document.querySelector("#first-name").value,
             //let daysAvailable = document.querySelectorAll("#dropdown-content input[type = checkbox]:checked")
             //let values = Array.from(daysAvailable).map(cb => cb.value);
 
@@ -168,7 +182,7 @@
                     body: JSON.stringify(myJson)
                 });
 
-                const data = await response.json();
+                data = await response.json();
                 console.log("Response from backend:", data);
 
                 try {
@@ -178,7 +192,7 @@
                         const schedule = JSON.parse(jsonMatch[0]);
 
                         // Format schedule as HTML
-                        let scheduleHTML = "<h2>Your Weekly Schedule</h2><ul>";
+                        let scheduleHTML = `<h2>${globalFirstName}'s Weekly Schedule</h2><ul>`;
                         for (const [day, details] of Object.entries(schedule.schedule)) {
                             scheduleHTML += `<li><strong>${day}:</strong> ${details}</li>`;
                         }
@@ -199,8 +213,6 @@
                 console.error("Error:", error);
                 alert("Failed to get response.");
             }
-
-
         }
 
         function generateScheduleChart(scheduleData) {
@@ -302,6 +314,25 @@
                 },
                 plugins: [ChartDataLabels] // Enable text overlay plugin
             });
+        }
+        function save()
+        {
+            let jsonString = JSON.stringify(data, null, 2);
+
+            const blob = new Blob([jsonString], {type: "application/string"});
+
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "schedule.json";
+
+            document.body.appendChild(a);
+            a.click();
+
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
+
+            alert("Data Saved");
+
         }
 
 
