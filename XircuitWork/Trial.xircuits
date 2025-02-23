@@ -1,0 +1,328 @@
+{
+    "id": "1278280b-25b6-4929-9e37-1e37b373015f",
+    "offsetX": 0,
+    "offsetY": 0,
+    "zoom": 100,
+    "gridSize": 0,
+    "layers": [
+        {
+            "id": "b9e89615-6833-4cb9-a1fc-fa7de8a0ca9b",
+            "type": "diagram-links",
+            "isSvg": true,
+            "transformed": true,
+            "models": {
+                "d48da378-1b5e-4128-9ee8-40200a91824a": {
+                    "id": "d48da378-1b5e-4128-9ee8-40200a91824a",
+                    "type": "triangle-link",
+                    "selected": false,
+                    "source": "cebfc7cc-8c98-4712-98d1-f3d59d7efa50",
+                    "sourcePort": "e5e66040-96e8-4afb-8740-9b5f0a9f6b43",
+                    "target": "f12c4a13-6889-41f5-a155-d70775ea44df",
+                    "targetPort": "9a6563f0-255c-4592-99d1-4143daa34018",
+                    "points": [
+                        {
+                            "id": "b991861a-d42d-481d-8475-02cd851bfe4b",
+                            "type": "point",
+                            "x": 167.734375,
+                            "y": 137.5
+                        },
+                        {
+                            "id": "1fb6ec76-3319-43fa-bfe9-fe333d61ba5e",
+                            "type": "point",
+                            "x": 250.5,
+                            "y": 137.5
+                        }
+                    ],
+                    "labels": [],
+                    "width": 3,
+                    "color": "gray",
+                    "curvyness": 50,
+                    "selectedColor": "rgb(0,192,255)"
+                },
+                "29255e19-1528-4027-b1e6-9f49af8d0f06": {
+                    "id": "29255e19-1528-4027-b1e6-9f49af8d0f06",
+                    "type": "parameter-link",
+                    "selected": false,
+                    "source": "cad42868-e35c-4278-9ddc-0c14b96a29a2",
+                    "sourcePort": "5311adaa-5395-4067-b56c-7400fd6c01f8",
+                    "target": "f12c4a13-6889-41f5-a155-d70775ea44df",
+                    "targetPort": "91ba5b00-7071-4654-b6cf-235ccab018fc",
+                    "points": [
+                        {
+                            "id": "a3cacf30-d98f-4a93-8761-62bb2dfa946f",
+                            "type": "point",
+                            "x": 151.1484375,
+                            "y": 222
+                        },
+                        {
+                            "id": "e29ca137-474b-4db7-9b58-447565e51092",
+                            "type": "point",
+                            "x": 250.5,
+                            "y": 159.5
+                        }
+                    ],
+                    "labels": [],
+                    "width": 3,
+                    "color": "gray",
+                    "curvyness": 50,
+                    "selectedColor": "rgb(0,192,255)"
+                }
+            }
+        },
+        {
+            "id": "42673703-aca5-4e2d-8c39-6474101e90f9",
+            "type": "diagram-nodes",
+            "isSvg": false,
+            "transformed": true,
+            "models": {
+                "cebfc7cc-8c98-4712-98d1-f3d59d7efa50": {
+                    "id": "cebfc7cc-8c98-4712-98d1-f3d59d7efa50",
+                    "type": "custom-node",
+                    "selected": false,
+                    "extras": {
+                        "type": "Start",
+                        "borderColor": "rgb(0,192,255)"
+                    },
+                    "x": 100,
+                    "y": 100,
+                    "ports": [
+                        {
+                            "id": "e5e66040-96e8-4afb-8740-9b5f0a9f6b43",
+                            "type": "default",
+                            "extras": {},
+                            "x": 157.234375,
+                            "y": 127,
+                            "name": "out-0",
+                            "alignment": "right",
+                            "parentNode": "cebfc7cc-8c98-4712-98d1-f3d59d7efa50",
+                            "links": [
+                                "d48da378-1b5e-4128-9ee8-40200a91824a"
+                            ],
+                            "in": false,
+                            "label": "▶",
+                            "varName": "▶",
+                            "portType": "",
+                            "dataType": ""
+                        }
+                    ],
+                    "name": "Start",
+                    "color": "rgb(255,102,102)",
+                    "portsInOrder": [],
+                    "portsOutOrder": [
+                        "e5e66040-96e8-4afb-8740-9b5f0a9f6b43"
+                    ]
+                },
+                "73fcbe8e-ea4d-42e4-915a-95ec762d1fe2": {
+                    "id": "73fcbe8e-ea4d-42e4-915a-95ec762d1fe2",
+                    "type": "custom-node",
+                    "selected": false,
+                    "extras": {
+                        "type": "Finish"
+                    },
+                    "x": 700,
+                    "y": 100,
+                    "ports": [
+                        {
+                            "id": "7d8e5102-d1bd-4d61-9563-183bf1976269",
+                            "type": "default",
+                            "extras": {},
+                            "x": 701,
+                            "y": 127,
+                            "name": "in-0",
+                            "alignment": "left",
+                            "parentNode": "73fcbe8e-ea4d-42e4-915a-95ec762d1fe2",
+                            "links": [],
+                            "in": true,
+                            "label": "▶",
+                            "varName": "▶",
+                            "portType": "",
+                            "dataType": ""
+                        },
+                        {
+                            "id": "c444efd5-05db-4377-b912-ba64f434c168",
+                            "type": "default",
+                            "extras": {},
+                            "x": 701,
+                            "y": 149,
+                            "name": "parameter-dynalist-outputs",
+                            "alignment": "left",
+                            "parentNode": "73fcbe8e-ea4d-42e4-915a-95ec762d1fe2",
+                            "links": [],
+                            "in": true,
+                            "label": "outputs",
+                            "varName": "outputs",
+                            "portType": "",
+                            "dataType": "dynalist",
+                            "dynaPortOrder": 0,
+                            "dynaPortRef": {
+                                "previous": null,
+                                "next": null
+                            }
+                        }
+                    ],
+                    "name": "Finish",
+                    "color": "rgb(255,102,102)",
+                    "portsInOrder": [
+                        "7d8e5102-d1bd-4d61-9563-183bf1976269",
+                        "c444efd5-05db-4377-b912-ba64f434c168"
+                    ],
+                    "portsOutOrder": []
+                },
+                "f12c4a13-6889-41f5-a155-d70775ea44df": {
+                    "id": "f12c4a13-6889-41f5-a155-d70775ea44df",
+                    "type": "custom-node",
+                    "selected": false,
+                    "extras": {
+                        "type": "library_component",
+                        "path": "xai_components/xai_tensorflow_keras/training.py",
+                        "description": "Loads a Keras image dataset or creates a dataset from a directory.\n\n### Reference:\n- Keras Model Applications: https://keras.io/api/datasets/\n\n##### inPorts:\n- dataset_name: Loads a Keras image dataset given a valid string \n    (mnist / mnist fasion / cifar10 / cifar 100) OR \n    creates a dataset object when given a valid dataset directory path. \n    \n    For the latter, the directory must have subdirectories and each \n    subdirectory name will be treated as its own class.\n\n    for example, when given a Literal String `DATASET`, the structure must be:\n    working_dir/\n        |- DATASET \n            |- CLASS_1\n            |- CLASS_2\n            |- CLASS_3\n    \n##### outPorts:\n- dataset: a dataset tuple\n- class_dict: dict of classes if not using IMAGENET.",
+                        "lineNo": [
+                            {
+                                "lineno": 12,
+                                "end_lineno": 136
+                            }
+                        ],
+                        "borderColor": "red",
+                        "tip": "in not connected to in"
+                    },
+                    "x": 239,
+                    "y": 100,
+                    "ports": [
+                        {
+                            "id": "9a6563f0-255c-4592-99d1-4143daa34018",
+                            "type": "default",
+                            "extras": {},
+                            "x": 240,
+                            "y": 127,
+                            "name": "in-0",
+                            "alignment": "left",
+                            "parentNode": "f12c4a13-6889-41f5-a155-d70775ea44df",
+                            "links": [
+                                "d48da378-1b5e-4128-9ee8-40200a91824a"
+                            ],
+                            "in": true,
+                            "label": "▶",
+                            "varName": "▶",
+                            "portType": "",
+                            "dataType": ""
+                        },
+                        {
+                            "id": "91ba5b00-7071-4654-b6cf-235ccab018fc",
+                            "type": "default",
+                            "extras": {},
+                            "x": 240,
+                            "y": 149,
+                            "name": "parameter-string-dataset_name",
+                            "alignment": "left",
+                            "parentNode": "f12c4a13-6889-41f5-a155-d70775ea44df",
+                            "links": [
+                                "29255e19-1528-4027-b1e6-9f49af8d0f06"
+                            ],
+                            "in": true,
+                            "label": "★dataset_name",
+                            "varName": "★dataset_name",
+                            "portType": "",
+                            "dataType": "string"
+                        },
+                        {
+                            "id": "72d03674-9c6d-4713-9fd2-f19ca8c3aee3",
+                            "type": "default",
+                            "extras": {},
+                            "x": 420.015625,
+                            "y": 127,
+                            "name": "out-0",
+                            "alignment": "right",
+                            "parentNode": "f12c4a13-6889-41f5-a155-d70775ea44df",
+                            "links": [],
+                            "in": false,
+                            "label": "▶",
+                            "varName": "▶",
+                            "portType": "",
+                            "dataType": ""
+                        },
+                        {
+                            "id": "57d5dc7f-5025-47e9-8550-13b8ae9d2c7d",
+                            "type": "default",
+                            "extras": {},
+                            "x": 420.015625,
+                            "y": 149,
+                            "name": "parameter-out-Tuple[np.array, np.array]-dataset",
+                            "alignment": "right",
+                            "parentNode": "f12c4a13-6889-41f5-a155-d70775ea44df",
+                            "links": [],
+                            "in": false,
+                            "label": "dataset",
+                            "varName": "dataset",
+                            "portType": "",
+                            "dataType": "Tuple[np.array, np.array]"
+                        },
+                        {
+                            "id": "77b07b16-7a38-4522-9ac0-771d34f3021b",
+                            "type": "default",
+                            "extras": {},
+                            "x": 420.015625,
+                            "y": 171,
+                            "name": "parameter-out-dict-class_dict",
+                            "alignment": "right",
+                            "parentNode": "f12c4a13-6889-41f5-a155-d70775ea44df",
+                            "links": [],
+                            "in": false,
+                            "label": "class_dict",
+                            "varName": "class_dict",
+                            "portType": "",
+                            "dataType": "dict"
+                        }
+                    ],
+                    "name": "ReadKerasDataSet",
+                    "color": "rgb(204,204,204)",
+                    "portsInOrder": [
+                        "9a6563f0-255c-4592-99d1-4143daa34018",
+                        "91ba5b00-7071-4654-b6cf-235ccab018fc"
+                    ],
+                    "portsOutOrder": [
+                        "72d03674-9c6d-4713-9fd2-f19ca8c3aee3",
+                        "57d5dc7f-5025-47e9-8550-13b8ae9d2c7d",
+                        "77b07b16-7a38-4522-9ac0-771d34f3021b"
+                    ]
+                },
+                "cad42868-e35c-4278-9ddc-0c14b96a29a2": {
+                    "id": "cad42868-e35c-4278-9ddc-0c14b96a29a2",
+                    "type": "custom-node",
+                    "selected": false,
+                    "extras": {
+                        "type": "string",
+                        "attached": false
+                    },
+                    "x": 75,
+                    "y": 187,
+                    "ports": [
+                        {
+                            "id": "5311adaa-5395-4067-b56c-7400fd6c01f8",
+                            "type": "default",
+                            "extras": {},
+                            "x": 140.6484375,
+                            "y": 211.5,
+                            "name": "out-0",
+                            "alignment": "right",
+                            "parentNode": "cad42868-e35c-4278-9ddc-0c14b96a29a2",
+                            "links": [
+                                "29255e19-1528-4027-b1e6-9f49af8d0f06"
+                            ],
+                            "in": false,
+                            "label": "data.json",
+                            "varName": "data.json",
+                            "portType": "",
+                            "dataType": "string"
+                        }
+                    ],
+                    "name": "Literal String",
+                    "color": "lightpink",
+                    "portsInOrder": [],
+                    "portsOutOrder": [
+                        "5311adaa-5395-4067-b56c-7400fd6c01f8"
+                    ]
+                }
+            }
+        }
+    ]
+}

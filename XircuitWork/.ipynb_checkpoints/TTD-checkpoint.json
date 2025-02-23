@@ -1,0 +1,13 @@
+[
+    {
+        "occupation": "Software Engineer",
+        "freeTime": "Playing Basketball",
+        "firstName": "John",
+        "sleepHours": 7,
+        "daysAvailability": ["Monday", "Wednesday", "Friday"],
+        "workPreference": {
+            "remote": true,
+            "online": false
+        }
+    }
+]
