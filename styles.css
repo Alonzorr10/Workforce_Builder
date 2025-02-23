@@ -240,29 +240,6 @@ body.dark-mode .checkbox-group input[type="checkbox"] {
     filter: invert(1); /* Invert checkbox color for dark mode */
 }
 
-/* .output-container {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.output-container h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.output-container ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.output-container li {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-} */
-
 /* Modal Background */
 .modal {
     display: none;
@@ -301,5 +278,19 @@ body.dark-mode .checkbox-group input[type="checkbox"] {
 }
 
 #schedule-modal-content li {
-    margin-bottom: 5px; /* Adds spacing between lines */
+    margin-bottom: 12px; /* Adjust space between each day */
+    font-size: 16px; /* Optional: Adjust text size for readability */
+    line-height: 1.6; /* Optional: Improve text spacing */
+}
+
+/* Default (Light Mode) */
+.modal-content {
+    background-color: white;
+    color: black; /* Ensures text is black in light mode */
+}
+
+/* Dark Mode Fix */
+.dark-mode .modal-content {
+    background-color: #A9A9A9; /* Dark background */
+    color: white; /* White text in dark mode */
 }
