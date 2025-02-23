@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Page</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
 </head>
 <body>
     <div class="container">
@@ -72,6 +74,15 @@
         </div>
     </div>
     <div id="schedule-output" class="output-container"></div>
+    <!-- Modal for Schedule -->
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="schedule-modal-content">
+                <!-- The schedule list will be injected here -->
+            </div>
+        </div>
+    </div>
 
     <script>
 
@@ -187,25 +198,29 @@
                 console.log("Response from backend:", data);
 
                 try {
-                    const schedule = JSON.parse(data.choices[0].message.content);
+                    // Extract and parse JSON response
+                    const jsonMatch = data.choices[0].message.content.match(/\{.*\}/s);
+                    if (jsonMatch) {
+                        const schedule = JSON.parse(jsonMatch[0]);
 
-                    // Format schedule as HTML
-                    let scheduleHTML = "<h2>Your Weekly Schedule</h2><ul>";
-                    for (const [day, details] of Object.entries(schedule.schedule)) {
-                        scheduleHTML += `<li><strong>${day}:</strong> ${details}</li>`;
+                        // Format schedule as HTML
+                        let scheduleHTML = "<h2>Your Weekly Schedule</h2><ul>";
+                        for (const [day, details] of Object.entries(schedule.schedule)) {
+                            scheduleHTML += `<li><strong>${day}:</strong> ${details}</li>`;
+                        }
+                        scheduleHTML += "</ul>";
+
+                        // Insert into the modal instead of page
+                        document.getElementById("schedule-modal-content").innerHTML = scheduleHTML;
+
+                        // Open the modal
+                        openModal();
                     }
-                    scheduleHTML += "</ul>";
-
-                    document.getElementById("schedule-output").innerHTML = scheduleHTML;
                 } catch (parseError) {
                     console.error("Error parsing JSON response:", parseError);
-                    document.getElementById("schedule-output").innerHTML = "<p>Error: Invalid schedule format.</p>";
+                    alert("Invalid schedule format received.");
                 }
 
-                // alert("Response: " + data.choices[0].message.content);
-
-                // const schedule = JSON.parse(data.choices[0].message.content);
-                // alert("Generated Schedule: " + JSON.stringify(schedule, null, 2));
             } catch (error) {
                 console.error("Error:", error);
                 alert("Failed to get response.");
@@ -213,6 +228,125 @@
 
 
         }
+
+        function generateScheduleChart(scheduleData) {
+            const ctx = document.getElementById("scheduleChart").getContext("2d");
+
+            // Clear previous chart if exists
+            if (window.myScheduleChart) {
+                window.myScheduleChart.destroy();
+            }
+
+            // Task type to color mapping
+            const taskColors = {
+                "Deep Work": "#FF6384",
+                "Meetings": "#36A2EB",
+                "Breaks": "#FFCE56",
+                "Personal": "#4CAF50",
+                "Sleep": "#9E9E9E",
+                "Other": "#CCCCCC"
+            };
+
+            const days = Object.keys(scheduleData); // Extract days
+            const dataset = [];
+
+            days.forEach((day) => {
+                const tasks = scheduleData[day].split(", ");
+                
+                tasks.forEach(task => {
+                    let category = "Other"; // Default category
+                    let startHour = 8; // Default start time if not provided
+                    let duration = 1; // Default duration (adjustable)
+
+                    if (task.toLowerCase().includes("work")) category = "Deep Work";
+                    if (task.toLowerCase().includes("meeting")) category = "Meetings";
+                    if (task.toLowerCase().includes("break") || task.toLowerCase().includes("lunch")) category = "Breaks";
+                    if (task.toLowerCase().includes("gym") || task.toLowerCase().includes("personal")) category = "Personal";
+                    if (task.toLowerCase().includes("sleep")) category = "Sleep";
+
+                    // Extract start time from task (e.g., "Work 9 AM - 5 PM")
+                    const timeMatch = task.match(/(\d{1,2})\s?(AM|PM)\s?-\s?(\d{1,2})\s?(AM|PM)/);
+                    if (timeMatch) {
+                        let start = parseInt(timeMatch[1]);
+                        let end = parseInt(timeMatch[3]);
+
+                        // Convert AM/PM to 24-hour format
+                        if (timeMatch[2] === "PM" && start !== 12) start += 12;
+                        if (timeMatch[4] === "PM" && end !== 12) end += 12;
+                        if (timeMatch[2] === "AM" && start === 12) start = 0;
+                        if (timeMatch[4] === "AM" && end === 12) end = 0;
+
+                        startHour = start;
+                        duration = end - start;
+                    }
+
+                    dataset.push({
+                        label: task, // Task label
+                        backgroundColor: taskColors[category] || "#D3D3D3",
+                        borderColor: taskColors[category] || "#D3D3D3",
+                        borderWidth: 1,
+                        borderRadius: 3,
+                        data: [{
+                            x: [startHour, startHour + duration], // Variable task length
+                            y: day
+                        }]
+                    });
+                });
+            });
+
+            // Create the chart inside the modal
+            window.myScheduleChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: days, // Days of the week
+                    datasets: dataset
+                },
+                options: {
+                    indexAxis: "y",
+                    scales: {
+                        x: {
+                            min: 0,
+                            max: 24, // 24-hour format
+                            title: { display: true, text: "Hour of Day (24-hour format)" }
+                        },
+                        y: { title: { display: true, text: "Days of the Week" } }
+                    },
+                    plugins: {
+                        tooltip: {
+                            enabled: false // Hide tooltips (overlay text instead)
+                        },
+                        legend: { display: false }, // Hide legend
+                        datalabels: {
+                            anchor: "center",
+                            align: "center",
+                            color: "white",
+                            font: { weight: "bold" },
+                            formatter: (value, context) => context.dataset.label // Show task name inside bar
+                        }
+                    },
+                    responsive: true
+                },
+                plugins: [ChartDataLabels] // Enable text overlay plugin
+            });
+        }
+
+
+        function openModal() {
+            document.getElementById("scheduleModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("scheduleModal").style.display = "none";
+        }
+    // Close modal when clicking outside the modal content (but not inside dropdown)
+    document.getElementById("scheduleModal").addEventListener("click", function(event) {
+        const modalContent = document.querySelector(".modal-content");
+
+        // Only close if clicking outside modal content
+        if (!modalContent.contains(event.target)) {
+            closeModal();
+        }
+    });
         
         
     </script>

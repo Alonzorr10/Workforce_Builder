@@ -4,7 +4,7 @@ const cors = require('cors');
 const { OpenAI } = require('openai'); // Use OpenAI SDK
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 // Load API credentials from .env
 const client = new OpenAI({
@@ -24,6 +24,13 @@ app.post('/generate', async (req, res) => {
         const prompt =  `
         You are an AI assistant that generates structured weekly work schedules in **valid JSON format**.
         Do not include explanations, preambles, or extra text—return **only** a valid JSON object.
+
+        You can add or change the work hours
+        and activities to fit the user's preferences and availability. Make sure to balance work, personal activities, 
+        and sleep and non-negotiables if there are any. For the "..." in the below example you may say Free Time or
+        other relevant activities/recommendations based on user input. Try not to be too Repeatitive on tasks/activities.
+        and include short encouraging messages or text for empty time. Note you do not have to write the encouraging text
+        for every free slot, keep it real and balanced.
         
         Here are the user's details:
         {
@@ -47,7 +54,7 @@ app.post('/generate', async (req, res) => {
           }
         }
         
-        IMPORTANT: Only return the JSON object. No explanations, introductions, or extra text.
+        IMPORTANT: Only return the JSON object. No explanations, introductions.
         `;
         
         // `
