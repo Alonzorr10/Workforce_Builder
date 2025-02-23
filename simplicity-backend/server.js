@@ -25,18 +25,25 @@ app.post('/generate', async (req, res) => {
         You are an AI assistant that generates structured weekly work schedules in **valid JSON format**.
         Do not include explanations, preambles, or extra text—return **only** a valid JSON object.
 
+        Make sure to customize the title with the "first_name"
+        If the User is remote, then do not factor in commute time.
+        If the user is both remote and in-person or just in-person, make sure to factor in commute time of atleast 30 minutes into the schedule.
+        Customize the activities based on user inputs/preferences.
+
         You can add or change the work hours
         and activities to fit the user's preferences and availability. Make sure to balance work, personal activities, 
         and sleep and non-negotiables if there are any. For the "..." in the below example you may say Free Time or
         other relevant activities/recommendations based on user input. Try not to be too Repeatitive on tasks/activities.
         and include short encouraging messages or text for empty time. Note you do not have to write the encouraging text
         for every free slot, keep it real and balanced.
+
         
         Here are the user's details:
         {
           "occupation": "${userInput.occupation}",
           "free_time": "${userInput.freeTime}",
           "sleep_hours": "${userInput.sleepHours}",
+          "first_name": "${userInput.firstName}",
           "days_availability": ${JSON.stringify(userInput.daysAvailability)},
           "work_preference": ${JSON.stringify(userInput.workPreference)}
         }
