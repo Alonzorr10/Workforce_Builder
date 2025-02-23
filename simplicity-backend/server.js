@@ -4,7 +4,7 @@ const cors = require('cors');
 const { OpenAI } = require('openai'); // Use OpenAI SDK
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 // Load API credentials from .env
 const client = new OpenAI({
