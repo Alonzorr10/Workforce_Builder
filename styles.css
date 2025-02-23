@@ -240,7 +240,7 @@ body.dark-mode .checkbox-group input[type="checkbox"] {
     filter: invert(1); /* Invert checkbox color for dark mode */
 }
 
-.output-container {
+/* .output-container {
     margin-top: 20px;
     padding: 15px;
     background-color: #f8f9fa;
@@ -261,7 +261,7 @@ body.dark-mode .checkbox-group input[type="checkbox"] {
 .output-container li {
     padding: 8px;
     border-bottom: 1px solid #ddd;
-}
+} */
 
 /* Modal Background */
 .modal {

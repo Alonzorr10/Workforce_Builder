@@ -171,21 +171,6 @@
                 const data = await response.json();
                 console.log("Response from backend:", data);
 
-                // try {
-                //     const schedule = JSON.parse(data.choices[0].message.content);
-
-                //     // Format schedule as HTML
-                //     let scheduleHTML = "<h2>Your Weekly Schedule</h2><ul>";
-                //     for (const [day, details] of Object.entries(schedule.schedule)) {
-                //         scheduleHTML += `<li><strong>${day}:</strong> ${details}</li>`;
-                //     }
-                //     scheduleHTML += "</ul>";
-
-                //     document.getElementById("schedule-output").innerHTML = scheduleHTML;
-                // } catch (parseError) {
-                //     console.error("Error parsing JSON response:", parseError);
-                //     document.getElementById("schedule-output").innerHTML = "<p>Error: Invalid schedule format.</p>";
-                // }
                 try {
                     // Extract and parse JSON response
                     const jsonMatch = data.choices[0].message.content.match(/\{.*\}/s);
