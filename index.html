@@ -1,17 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- HTML5 doc -->
+
+<html lang="en"> <!-- English Language -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workflow AI</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
+        <!-- Loading prompt -->
+        <div id="loading" class="loading-overlay">
+            <p>Generating schedule... Please wait.</p>
+        </div>
+
+        <div id="schedule-output" class="output-container" style="display: none;">
+            <h2>Your Schedule</h2>
+            <ul id="schedule-list"></ul>
+        </div>
+
         <h1 class="title">Workflow AI</h1>
 
+        <!-- Button Group -->
         <div class="button-group">
-            <button class="btn generate-btn" onclick="window.location.href='input-page.html'">Generate</button> 
+            <button class="btn generate-btn" onclick="window.location.href='index.html'">Generate</button>
+            <button class="btn" id="upload-btn">Upload Schedule</button>
         </div>
 
         <!-- Light/Dark Mode Slider Button -->
@@ -44,4 +59,5 @@
         });
     </script>
 </body>
+
 </html>
