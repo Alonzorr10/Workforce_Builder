@@ -74,6 +74,36 @@
     <div id="schedule-output" class="output-container"></div>
 
     <script>
+
+        function save()
+        {
+            let myJson =
+            {
+                occupation: document.querySelector("#occupation").value,
+                freeTime: document.querySelector("#free-time").value,
+                sleepHours: document.querySelector("#sleeping-hours").value,
+                daysAvailability: Array.from(document.querySelectorAll('#dropdown-content input[type=checkbox]:checked'))
+                .map(cb => cb.value),
+                workPreference: Array.from(document.querySelectorAll('#checkbox-group input[type=checkbox]:checked'))
+                .map(cb => cb.value)
+            };
+
+            let jsonString = JSON.stringify(myJson, null, 2);
+
+            const blob = new Blob([jsonString], {type: "application/string"});
+
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "schedule.json";
+
+            document.body.appendChild(a);
+            a.click();
+
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
+
+            alert("Data Saved");
+        }
         // JavaScript to toggle light/dark mode
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
