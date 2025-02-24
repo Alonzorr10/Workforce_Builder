@@ -11,22 +11,12 @@
 
 <body>
     <div class="container">
-        <!-- Loading prompt -->
-        <div id="loading" class="loading-overlay">
-            <p>Generating schedule... Please wait.</p>
-        </div>
-
-        <div id="schedule-output" class="output-container" style="display: none;">
-            <h2>Your Schedule</h2>
-            <ul id="schedule-list"></ul>
-        </div>
 
         <h1 class="title">Workflow AI</h1>
 
         <!-- Button Group -->
         <div class="button-group">
             <button class="btn generate-btn" onclick="window.location.href='input-page.html'">Generate</button>
-            <button class="btn" id="upload-btn">Upload Schedule</button>
         </div>
 
         <!-- Light/Dark Mode Slider Button -->
@@ -37,11 +27,9 @@
     </div>
 
     <script>
-        // JavaScript to toggle light/dark mode
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
 
-        // Check for saved theme in localStorage
         if (localStorage.getItem('theme') === 'dark') {
             body.classList.add('dark-mode');
             themeToggle.checked = true;
