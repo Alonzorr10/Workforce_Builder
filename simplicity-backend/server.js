@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send("Server is running! 🚀 Use POST /generate to interact.");
+  res.status(200).send("Server is running! 🚀 Use POST /generate to interact.");
 });
 
 // API route to handle requests from frontend
