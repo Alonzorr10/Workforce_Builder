@@ -16,6 +16,10 @@ const client = new OpenAI({
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.status(200).send("Server is running! 🚀 Use POST /generate to interact.");
+});
+
 // API route to handle requests from frontend
 app.post('/generate', async (req, res) => {
     try {
@@ -98,6 +102,6 @@ app.post('/generate', async (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

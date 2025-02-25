@@ -1,5 +1,6 @@
 /* General Styles */
-body {
+body
+{
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
@@ -11,20 +12,24 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.container {
+/* Container */
+.container
+{
     text-align: center;
     width: 100%;
     max-width: 800px;
 }
 
 /* Title Styles */
-.title {
+.title
+{
     font-size: 48px;
     margin-bottom: 40px;
 }
 
 /* Input Section Styles */
-.input-section {
+.input-section
+{
     margin-top: 30px;
     display: flex;
     flex-direction: column;
@@ -32,20 +37,41 @@ body {
     width: 100%;
 }
 
-.input-group {
+/* Loading */
+.loading-overlay 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    display: none; /* Initially hidden */
+}
+
+.input-group
+{
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-bottom: 20px; /* Spacing between input groups */
 }
 
-.input-group label {
+.input-group label
+{
     font-size: 24px; /* Larger font size for labels */
     color: #333;
     margin-bottom: 10px; /* Spacing between label and input */
 }
 
-.input-group input {
+.input-group input
+{
     padding: 12px;
     width: 100%;
     border: 1px solid #ccc;
@@ -55,12 +81,14 @@ body {
 }
 
 /* Custom Dropdown Styles */
-.custom-dropdown {
+.custom-dropdown
+{
     position: relative;
     width: 100%;
 }
 
-.dropdown-button {
+.dropdown-button
+{
     padding: 12px;
     width: 100%;
     border: 1px solid #ccc;
@@ -74,11 +102,13 @@ body {
     align-items: center;
 }
 
-.dropdown-button .arrow {
+.dropdown-button .arrow
+{
     font-size: 14px;
 }
 
-.dropdown-content {
+.dropdown-content
+{
     display: none;
     position: absolute;
     width: 100%;
@@ -220,8 +250,22 @@ body.dark-mode .btn:hover {
     background-color: #555;
 }
 
+body.dark-mode .title {
+    color: #ffffff; /* Ensure title is visible in dark mode */
+}
+
 body.dark-mode .input-group label {
     color: #ffffff; /* Ensure labels are visible in dark mode */
+}
+
+body.dark-mode .loading-overlay {
+    background: rgba(0, 0, 0, 0.7); /* Darker loading overlay */
+}
+
+body.dark-mode .output-container {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
 }
 
 body.dark-mode .input-group input,
