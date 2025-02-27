@@ -154,67 +154,86 @@
         document.querySelectorAll('#dropdown-content input[type=checkbox]').forEach(checkbox => {
             checkbox.addEventListener('change', updateDropdownButton);
         });
+        
 
-        async function insert(){
-            myJson = {
-                firstName: document.querySelector("#first-name").value,
-                occupation: document.querySelector("#occupation").value,
-                freeTime: document.querySelector("#free-time").value,
-                sleepHours: document.querySelector("#sleeping-hours").value,
-                daysAvailability: Array.from(document.querySelectorAll('#dropdown-content input[type=checkbox]:checked'))
-                .map(cb => cb.value),
-                workPreference: Array.from(document.querySelectorAll('#checkbox-group input[type=checkbox]:checked'))
-                .map(cb => cb.value)
-            };
-            globalFirstName = document.querySelector("#first-name").value; 
-            //                firstName: document.querySelector("#first-name").value,
-            //let daysAvailable = document.querySelectorAll("#dropdown-content input[type = checkbox]:checked")
-            //let values = Array.from(daysAvailable).map(cb => cb.value);
-
-
-            //console.log("Checked values:", values);
-            console.log("myJson", myJson);
-            console.log("myJson:", JSON.stringify(myJson, null, 2));
-
-            try {
-                const response = await fetch("http://localhost:8000/generate", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(myJson)
-                });
-
-                data = await response.json();
-                console.log("Response from backend:", data);
-
-                try {
-                    // Extract and parse JSON response
-                    const jsonMatch = data.choices[0].message.content.match(/\{.*\}/s);
-                    if (jsonMatch) {
-                        const schedule = JSON.parse(jsonMatch[0]);
-
-                        // Format schedule as HTML
-                        let scheduleHTML = `<h2>${globalFirstName}'s Weekly Schedule</h2><ul>`;
-                        for (const [day, details] of Object.entries(schedule.schedule)) {
-                            scheduleHTML += `<li><strong>${day}:</strong> ${details}</li>`;
-                        }
-                        scheduleHTML += "</ul>";
-
-                        // Insert into the modal instead of page
-                        document.getElementById("schedule-modal-content").innerHTML = scheduleHTML;
-
-                        // Open the modal
-                        openModal();
-                    }
-                } catch (parseError) {
-                    console.error("Error parsing JSON response:", parseError);
-                    alert("Invalid schedule format received.");
-                }
-
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Failed to get response.");
-            }
+        async function getNgrokUrl() {
+    try {
+        const response = await fetch("http://localhost:8000/ngrok-url");
+        const data = await response.json();
+        if (data.ngrokUrl) {
+            return data.ngrokUrl;  // Return the latest ngrok URL
+        } else {
+            console.error("Failed to get ngrok URL:", data.error);
+            return null;
         }
+    } catch (error) {
+        console.error("Error fetching ngrok URL:", error);
+        return null;
+    }
+}
+        async function insert() {
+            const ngrokUrl = await getNgrokUrl();
+            if (!ngrokUrl) 
+            {
+                alert("Failed to connect to the backend.");
+                return;
+            }
+
+    let myJson = {
+        firstName: document.querySelector("#first-name").value,
+        occupation: document.querySelector("#occupation").value,
+        freeTime: document.querySelector("#free-time").value,
+        sleepHours: document.querySelector("#sleeping-hours").value,
+        daysAvailability: Array.from(document.querySelectorAll('#dropdown-content input[type=checkbox]:checked'))
+            .map(cb => cb.value),
+        workPreference: Array.from(document.querySelectorAll('#checkbox-group input[type=checkbox]:checked'))
+            .map(cb => cb.value)
+    };
+
+    globalFirstName = document.querySelector("#first-name").value;
+
+    console.log("myJson", myJson);
+    console.log("myJson:", JSON.stringify(myJson, null, 2));
+
+    try {
+        const response = await fetch(`${ngrokUrl}/generate`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(myJson)
+        });
+
+        const data = await response.json();
+        console.log("Response from backend:", data);
+
+        try {
+            // Extract and parse JSON response
+            const jsonMatch = data.choices[0].message.content.match(/\{.*\}/s);
+            if (jsonMatch) {
+                const schedule = JSON.parse(jsonMatch[0]);
+
+                // Format schedule as HTML
+                let scheduleHTML = `<h2>${globalFirstName}'s Weekly Schedule</h2><ul>`;
+                for (const [day, details] of Object.entries(schedule.schedule)) {
+                    scheduleHTML += `<li><strong>${day}:</strong> ${details}</li>`;
+                }
+                scheduleHTML += "</ul>";
+
+                // Insert into the modal instead of page
+                document.getElementById("schedule-modal-content").innerHTML = scheduleHTML;
+
+                // Open the modal
+                openModal();
+            }
+        } catch (parseError) {
+            console.error("Error parsing JSON response:", parseError);
+            alert("Invalid schedule format received.");
+        }
+
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Failed to get response.");
+    }
+}
 
         function generateScheduleChart(scheduleData) {
             const ctx = document.getElementById("scheduleChart").getContext("2d");
@@ -352,9 +371,7 @@
         if (!modalContent.contains(event.target)) {
             closeModal();
         }
-    });
-        
-        
+    });   
     </script>
 </body>
 </html>
